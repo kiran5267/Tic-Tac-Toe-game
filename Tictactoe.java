@@ -48,7 +48,7 @@ class Tictactoe{
 	}
 
 
-	public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
+	public static void main(String[] args){
 		Tictactoe obj1=new Tictactoe();
 		obj1.initializeBoard();
 		obj1.chooseLetter();
