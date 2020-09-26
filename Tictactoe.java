@@ -37,6 +37,7 @@ class Tictactoe{
 		int location=sc.nextInt();
 		if(location>9 || location ==0){
 			System.out.println("Enter valid location");
+			setLocation();
 		}
 		else if(board[location]==' '){
 			board[location]=userChoice;
@@ -46,14 +47,36 @@ class Tictactoe{
 			System.out.println("location assigned already");
 		}
 	}
-
-
+	//UC 5
+	void nextMove(){
+		for(int i=1;i<10;i++){
+			if(board[i]==' '){
+				setLocation();
+				break;
+			}
+		}
+	}
+	//UC 6
+	void firstMove(){
+		int toss=(int)(Math.floor(Math.random()*10)%2);
+		System.out.println("Enter 0 for tails or 1 for heads");
+		Scanner sc=new Scanner(System.in);
+		int choice=sc.nextInt();
+		if(toss==choice){
+			System.out.println("user Starts first");
+		}
+		else{
+			System.out.println("Computer starts first");
+		}
+	}
 	public static void main(String[] args){
 		Tictactoe obj1=new Tictactoe();
 		obj1.initializeBoard();
 		obj1.chooseLetter();
 		obj1.showBoard();
 		obj1.setLocation();
+		obj1.nextMove();
+		obj1.firstMove();
    }
 }
 
