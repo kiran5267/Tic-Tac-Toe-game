@@ -1,8 +1,10 @@
+import java.lang.*;
 import java.util.*;
 class Tictactoe{
-	//UC 1
 	char[] board=new char[10];
-   void initializeBoard(){
+	char userChoice,comChoice;
+	//UC 1
+	void initializeBoard(){
 		for(int i=0;i<10;i++){
 			board[i]=' ';
 		}
@@ -11,8 +13,7 @@ class Tictactoe{
 	void chooseLetter(){
 		System.out.println(" Choose a letter X or O");
 		Scanner sc=new Scanner(System.in);
-		char comChoice;
-		char userChoice=sc.next().charAt(0);
+		userChoice=sc.next().charAt(0);
 		if(userChoice=='X'){
 			comChoice='O';
 		}
@@ -25,17 +26,34 @@ class Tictactoe{
 	void showBoard(){
 		System.out.println(board[1]+"|"+board[2]+"|"+board[3]);
 		System.out.println("-----");
-      System.out.println(board[4]+"|"+board[5]+"|"+board[6]);
-      System.out.println("-----");
-      System.out.println(board[7]+"|"+board[8]+"|"+board[9]);
+		System.out.println(board[4]+"|"+board[5]+"|"+board[6]);
+		System.out.println("-----");
+		System.out.println(board[7]+"|"+board[8]+"|"+board[9]);
+	}
+	//UC 4
+	void setLocation(){
+		System.out.println("Enter the location");
+		Scanner sc=new Scanner(System.in);
+		int location=sc.nextInt();
+		if(location>9 || location ==0){
+			System.out.println("Enter valid location");
+		}
+		else if(board[location]==' '){
+			board[location]=userChoice;
+			showBoard();
+		}
+		else{
+			System.out.println("location assigned already");
+		}
 	}
 
 
-   public static void main(String[] args){
-      Tictactoe obj1=new Tictactoe();
-      obj1.initializeBoard();
-      obj1.chooseLetter();
+	public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
+		Tictactoe obj1=new Tictactoe();
+		obj1.initializeBoard();
+		obj1.chooseLetter();
 		obj1.showBoard();
+		obj1.setLocation();
    }
 }
 
